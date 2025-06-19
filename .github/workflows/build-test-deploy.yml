@@ -1,7 +1,7 @@
 name: build-test-deploy
 on: push
 jobs:
-  hello-world-job:
+  build:
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository code
@@ -14,3 +14,15 @@ jobs:
           node-version: '18.x'
       - run: npm install # With a build tool, use this to locally build Next.js code
       - run: npm run build
+  test:
+    needs: build # Tells the test job to run the build job first and wait for successful completion
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout repo #Why repeat? Because steps are scoped locally, must repeat for every job
+        uses: actions/checkout@v3
+      - name: use node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18.x'
+      - run: npm install
+      - run: npm test # Difference just to test code.
