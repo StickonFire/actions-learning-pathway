@@ -1,0 +1,10 @@
+name: hello-world # A name for the file
+on: push  # Tells which event triggers the job.
+jobs: # a list of executable jobs. Jobs tend to be parallel, but can be told to run in sequence.
+  hello-world-job:
+    runs-on: ubuntu-latest # Tells which system to run a specific job.
+    # Can run a script or a definable action. Could alternatively use a premade action.
+    steps: 
+      - name: Check out repository code #Name for a step, provides help when checking logs.
+        uses: actions/checkout@v3 # A premade action (3rd version) taken from https://github.com/actions/checkout. Provides access to the page.
+      - run: echo "$(cat helloworld.txt)" # A basic running command step.
