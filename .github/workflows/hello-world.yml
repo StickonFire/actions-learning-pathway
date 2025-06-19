@@ -7,4 +7,4 @@ jobs: # a list of executable jobs. Jobs tend to be parallel, but can be told to 
     steps: 
       - name: Check out repository code #Name for a step, provides help when checking logs.
         uses: actions/checkout@v3 # A premade action (3rd version) taken from https://github.com/actions/checkout. Provides access to the page.
-      - run: echo "$(cat helloworld.txt)" # A basic running command step.
+      - run: echo "$(cat hello_world.txt)" # A basic running command step.
